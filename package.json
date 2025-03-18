@@ -1,0 +1,23 @@
+{
+  "name": "easily--job-portal",
+  "version": "1.0.0",
+  "description": "Easily-Job Portal is a job portal web application built using **Node.js and Express** following the **MVC architecture**. It allows **job seekers** to search and apply for jobs, while **job recruiters** can post, update, and delete job listings.",
+  "homepage": "https://github.com/prathameshcode360/Easily--Job-Portal#readme",
+  "bugs": {
+    "url": "https://github.com/prathameshcode360/Easily--Job-Portal/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prathameshcode360/Easily--Job-Portal.git"
+  },
+  "license": "ISC",
+  "author": "prathamesh mhatugade",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
