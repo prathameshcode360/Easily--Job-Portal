@@ -1,0 +1,14 @@
+<section class="jobs">
+  <div class="job-cards">
+    <%jobs.forEach((job)=>{%>
+    <div class="job-card">
+      <h3><%=job.job_name%></h3>
+      <h3><%=job.company_name%></h3>
+      <h3><%=job.job_location%></h3>
+      <h3><%=job.salary%></h3>
+      <h3><%=job.skills%></h3>
+      <button>Apply</button>
+    </div>
+    <%})%>
+  </div>
+</section>
