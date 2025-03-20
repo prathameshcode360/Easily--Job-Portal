@@ -10,6 +10,10 @@ export default class JobModel {
   static getAll() {
     return jobs;
   }
+  static getById(id) {
+    let job = jobs.find((job) => job.id == id);
+    return job;
+  }
 }
 let jobs = [
   new JobModel(1, "Frontend Developer", "TCS", "Pune", 5000, [
