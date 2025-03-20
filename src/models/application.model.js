@@ -26,6 +26,7 @@ let applications = [
       name: "prathamesh",
       email: "prathamesh@gmail.com",
       contact: "8668835905",
+      resume: "",
     },
     {
       job_name: "Frontend Developer",

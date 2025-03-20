@@ -1,5 +1,8 @@
 <section class="application_form">
-  <form action="/application_form/<%= job.id %>" method="post">
+  <form
+    action="/application_form/<%= job.id %>"
+    method="post"
+    enctype="multipart/form-data">
     <label for="name">Enter your name</label>
     <input
       type="text"
@@ -24,8 +27,8 @@
       placeholder="Enter your contact number"
       required />
 
-    <!-- <label for="resume">Upload resume</label>
-    <input type="file" name="resume" id="resume" required /> -->
+    <label for="resume">Upload resume</label>
+    <input type="file" name="resume" id="resume" required />
 
     <button type="submit">Submit Application</button>
   </form>

@@ -31,8 +31,10 @@ export default class JobController {
     }
     console.log(req.body);
     const { name, email, contact } = req.body;
+    console.log(req.file);
+    const resume = req.file.filename;
 
-    const user_details = { name, email, contact };
+    const user_details = { name, email, contact, resume };
     const job_details = {
       job_name: job.job_name,
       company_name: job.company_name,
