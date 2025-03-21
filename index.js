@@ -5,6 +5,7 @@ import getHomePage from "./src/controllers/homeController.js";
 import JobController from "./src/controllers/job.controller.js";
 import ApplicationController from "./src/controllers/application.controller.js";
 import resumeUploads from "./src/middlewares/resumeUpload.middleware.js";
+import validateInputs from "./src/middlewares/validation.middleware.js";
 
 const server = express();
 
@@ -32,6 +33,7 @@ server.get("/application_form/:id", jobController.renderApplicationForm);
 server.post(
   "/application_form/:id",
   resumeUploads.single("resume"),
+  validateInputs,
   jobController.applyForJob
 );
 

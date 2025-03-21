@@ -1,34 +1,30 @@
 <section class="application_form">
+  <%if(errorMessage){%>
+  <div class="alert alert-danger" role="alert"><%=errorMessage%></div>
+  <%}%>
   <form
     action="/application_form/<%= job.id %>"
     method="post"
     enctype="multipart/form-data">
     <label for="name">Enter your name</label>
-    <input
-      type="text"
-      name="name"
-      id="name"
-      placeholder="Enter your name"
-      required />
+    <input type="text" name="name" id="name" placeholder="Enter your name" />
 
     <label for="email">Enter your email</label>
     <input
       type="email"
       name="email"
       id="email"
-      placeholder="Enter your email"
-      required />
+      placeholder="Enter your email" />
 
     <label for="contact">Your contact number</label>
     <input
       type="text"
       name="contact"
       id="contact"
-      placeholder="Enter your contact number"
-      required />
+      placeholder="Enter your contact number" />
 
     <label for="resume">Upload resume</label>
-    <input type="file" name="resume" id="resume" required />
+    <input type="file" name="resume" id="resume" />
 
     <button type="submit">Submit Application</button>
   </form>

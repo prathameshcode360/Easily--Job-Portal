@@ -18,7 +18,7 @@ export default class JobController {
     const id = req.params.id;
     let job = JobModel.getById(id);
     if (job) {
-      return res.render("applicationForm", { job });
+      return res.render("applicationForm", { job: job, errorMessage: null });
     } else {
       return res.status(404).send("Job not found");
     }
@@ -29,9 +29,7 @@ export default class JobController {
     if (!job) {
       return res.status(404).send("Job not found");
     }
-    console.log(req.body);
     const { name, email, contact } = req.body;
-    console.log(req.file);
     const resume = req.file.filename;
 
     const user_details = { name, email, contact, resume };
