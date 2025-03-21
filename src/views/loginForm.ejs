@@ -1,0 +1,24 @@
+<section class="login-form">
+  <form action="/login" method="post">
+    <%if(message){%>
+    <div class="alert alert-danger" role="alert"><%=message%></div>
+    <%}%>
+    <label for="email">Enter your email</label>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      placeholder="enter email"
+      required />
+    <label for="password">Enter your password</label>
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="enter password"
+      required />
+    <button type="submit">Login</button>
+    <p>dont have account</p>
+    <a href="/register">Register</a>
+  </form>
+</section>

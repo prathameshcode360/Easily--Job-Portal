@@ -6,6 +6,7 @@ import JobController from "./src/controllers/job.controller.js";
 import ApplicationController from "./src/controllers/application.controller.js";
 import resumeUploads from "./src/middlewares/resumeUpload.middleware.js";
 import validateInputs from "./src/middlewares/validation.middleware.js";
+import UserController from "./src/controllers/user.controller.js";
 
 const server = express();
 
@@ -15,6 +16,7 @@ server.use(express.urlencoded({ extended: true }));
 // controllers
 const jobController = new JobController();
 const applicationController = new ApplicationController();
+const userController = new UserController();
 
 //setting static file
 server.use(express.static("public"));
@@ -36,6 +38,11 @@ server.post(
   validateInputs,
   jobController.applyForJob
 );
+
+server.get("/register", userController.getRegister);
+server.get("/login", userController.getLogin);
+server.post("/login", userController.signin);
+server.post("/register", userController.signup);
 
 server.listen(3600, () => {
   console.log("server is listening on 3600");
