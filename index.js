@@ -43,6 +43,7 @@ server.get("/register", userController.getRegister);
 server.get("/login", userController.getLogin);
 server.post("/login", userController.signin);
 server.post("/register", userController.signup);
+server.get("/myJobs/:recruiter_id", userController.viewJobs);
 
 server.listen(3600, () => {
   console.log("server is listening on 3600");

@@ -1,17 +1,32 @@
+import JobModel from "./job.model.js";
+
 export default class UserModel {
-  constructor(id, name, email, password) {
+  constructor(id, name, email, password, recruiter_id) {
     this.id = id;
     this.name = name;
     this.email = email;
     this.password = password;
+    this.recruiter_id = recruiter_id;
   }
-  static register(name, email, password) {
-    const newUser = new UserModel(users.length + 1, name, email, password);
+  static register(name, email, password, recruiter_id) {
+    const newUser = new UserModel(
+      users.length + 1,
+      name,
+      email,
+      password,
+      recruiter_id
+    );
     users.push(newUser);
   }
   static login(email, password) {
     const user = users.find((u) => u.email == email && u.password == password);
-    return user.name;
+    return user;
+  }
+  static getJobs(recruiter_id) {
+    const jobs = JobModel.getAll().filter(
+      (job) => job.recruiter_id == recruiter_id
+    );
+    return jobs;
   }
 }
-let users = [new UserModel(1, "user1", "user1@gmail.com", "user1")];
+let users = [new UserModel(1, "user1", "user1@gmail.com", "user1", "CN-1")];

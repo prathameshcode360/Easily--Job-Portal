@@ -1,0 +1,16 @@
+<%if(!jobs.length){%>
+<h1>You dont post job,please navigate to add new job</h1>
+<%}else{%>
+<div class="job-cards">
+  <%jobs.forEach((job)=>{%>
+  <div class="job-card">
+    <h3><%=job.job_name%></h3>
+    <h3><%=job.company_name%></h3>
+    <h3><%=job.job_location%></h3>
+    <h3><%=job.salary%></h3>
+    <h3><%=job.skills%></h3>
+    <a href="/update">Update</a>
+    <a href="/delete">Delete</a>
+  </div>
+  <%})%><%}%>
+</div>
