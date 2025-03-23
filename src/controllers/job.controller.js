@@ -47,4 +47,27 @@ export default class JobController {
     let jobs = JobModel.getAll();
     return res.render("jobPage", { jobs });
   }
+  getaddNewJobPage(req, res) {
+    return res.render("addNewJob", { message: null });
+  }
+  addNewJob(req, res) {
+    const {
+      job_name,
+      company_name,
+      job_location,
+      salary,
+      skills,
+      recruiter_id,
+    } = req.body;
+    const skillsArray = skills.split(",");
+    JobModel.add(
+      job_name,
+      company_name,
+      job_location,
+      salary,
+      skillsArray,
+      recruiter_id
+    );
+    return res.render("addNewJob", { message: "Job added sucessfully" });
+  }
 }

@@ -16,6 +16,25 @@ export default class JobModel {
     this.skills = skills;
     this.recruiter_id = recruiter_id;
   }
+  static add(
+    job_name,
+    company_name,
+    job_location,
+    salary,
+    skills,
+    recruiter_id
+  ) {
+    const newJob = new JobModel(
+      jobs.length + 1,
+      job_name,
+      company_name,
+      job_location,
+      salary,
+      skills,
+      recruiter_id
+    );
+    jobs.push(newJob);
+  }
   static getAll() {
     return jobs;
   }

@@ -38,7 +38,8 @@ server.post(
   validateInputs,
   jobController.applyForJob
 );
-
+server.get("/addNew", jobController.getaddNewJobPage);
+server.post("/addNew", jobController.addNewJob);
 server.get("/register", userController.getRegister);
 server.get("/login", userController.getLogin);
 server.post("/login", userController.signin);
