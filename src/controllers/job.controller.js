@@ -1,5 +1,6 @@
 import ApplicationModel from "../models/application.model.js";
 import JobModel from "../models/job.model.js";
+import UserModel from "../models/user.model.js";
 
 export default class JobController {
   getJobs(req, res) {
@@ -37,13 +38,13 @@ export default class JobController {
       job_name: job.job_name,
       company_name: job.company_name,
       job_location: job.job_location,
+      recruiter_id: job.recruiter_id,
     };
 
     const application = ApplicationModel.addApplication(
       user_details,
       job_details
     );
-    console.log(application);
     let jobs = JobModel.getAll();
     return res.render("jobPage", { jobs });
   }
@@ -69,5 +70,19 @@ export default class JobController {
       recruiter_id
     );
     return res.render("addNewJob", { message: "Job added sucessfully" });
+  }
+
+  getUpdatePage(req, res) {
+    const id = req.params.id;
+    const job = JobModel.getById(id);
+    job.skills = Array.isArray(job.skills)
+      ? job.skills
+      : job.skills.split(",").map((skill) => skill.trim());
+    return res.render("updateJob", { job });
+  }
+  updateJob(req, res) {
+    const id = req.body.id; // Yahan se id le sakte hain
+    JobModel.update(id, req.body);
+    res.redirect(`/myJobs/${req.body.recruiter_id}`);
   }
 }

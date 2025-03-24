@@ -32,6 +32,24 @@ let applications = [
       job_name: "Frontend Developer",
       company_name: "TCS",
       job_location: "pune",
+      recruiter_id: "CN-1",
+    },
+
+    "19-03-25"
+  ),
+  new ApplicationModel(
+    2,
+    {
+      name: "Digu",
+      email: "digu@gmail.com",
+      contact: "868856774",
+      resume: "",
+    },
+    {
+      job_name: "NodeJs Developer",
+      company_name: "TCS",
+      job_location: "pune",
+      recruiter_id: "CN-1",
     },
 
     "19-03-25"

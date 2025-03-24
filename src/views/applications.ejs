@@ -1,0 +1,44 @@
+<section class="applications">
+  <%if(applications.length===0){%>
+  <h1>No applications found</h1>
+  <%}%>
+  <h2>Job Applications</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Candidate Name</th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>Resume</th>
+        <th>Job Name</th>
+        <th>Company</th>
+        <th>Location</th>
+        <th>Applied Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% applications.forEach(application => { %>
+      <tr>
+        <td><%= application.id %></td>
+        <td><%= application.user_details.name %></td>
+        <td><%= application.user_details.email %></td>
+        <td><%= application.user_details.contact %></td>
+        <td>
+          <% if (application.user_details.resume) { %>
+          <a
+            href="/uploads/<%= application.user_details.resume %>"
+            target="_blank"
+            >View Resume</a
+          >
+          <% } else { %> No Resume <% } %>
+        </td>
+        <td><%= application.job_details.job_name %></td>
+        <td><%= application.job_details.company_name %></td>
+        <td><%= application.job_details.job_location %></td>
+        <td><%= application.applied_date %></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</section>

@@ -1,3 +1,5 @@
+import { application } from "express";
+import ApplicationModel from "./application.model.js";
 import JobModel from "./job.model.js";
 
 export default class UserModel {
@@ -27,6 +29,12 @@ export default class UserModel {
       (job) => job.recruiter_id == recruiter_id
     );
     return jobs;
+  }
+  static getApplications(recruiter_id) {
+    let applications = ApplicationModel.getAllAppllications().filter(
+      (application) => application.job_details.recruiter_id == recruiter_id
+    );
+    return applications;
   }
 }
 let users = [new UserModel(1, "user1", "user1@gmail.com", "user1", "CN-1")];

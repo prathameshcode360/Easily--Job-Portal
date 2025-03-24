@@ -35,6 +35,14 @@ export default class JobModel {
     );
     jobs.push(newJob);
   }
+  static update(id, jobObject) {
+    const index = jobs.findIndex((job) => job.id == id);
+    jobs[index] = jobObject;
+  }
+  static delete(id) {
+    const index = jobs.findIndex((job) => job.id == id);
+    jobs.splice(index, 1);
+  }
   static getAll() {
     return jobs;
   }

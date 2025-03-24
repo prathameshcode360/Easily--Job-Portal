@@ -27,7 +27,7 @@ server.set("view engine", "ejs");
 server.set("views", path.resolve("src", "views"));
 
 // routes
-server.get("/applications", applicationController.getApplications);
+// server.get("/applications", applicationController.getApplications);
 server.get("/", getHomePage);
 server.get("/jobPage", jobController.getJobs);
 server.get("/jobDetails/:id", jobController.getJobDetails);
@@ -38,13 +38,22 @@ server.post(
   validateInputs,
   jobController.applyForJob
 );
+server.get("/myApplications/:recruiter_id", userController.viewApplications);
 server.get("/addNew", jobController.getaddNewJobPage);
 server.post("/addNew", jobController.addNewJob);
+server.get("/update/:id", jobController.getUpdatePage);
+server.post("/update/:id", jobController.updateJob);
+server.post("/myJobs/:recruiter_id", jobController.updateJob);
 server.get("/register", userController.getRegister);
 server.get("/login", userController.getLogin);
 server.post("/login", userController.signin);
 server.post("/register", userController.signup);
 server.get("/myJobs/:recruiter_id", userController.viewJobs);
+
+// Serve resumes from uploads folder
+// Manually define __dirname
+
+server.use("/uploads", express.static("uploads"));
 
 server.listen(3600, () => {
   console.log("server is listening on 3600");

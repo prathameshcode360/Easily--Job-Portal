@@ -1,0 +1,54 @@
+<form action="/update/<%= job.id %>" method="POST">
+  <input type="hidden" name="id" value="<%= job.id %>" />
+
+  <label
+    >Job Name:
+    <input
+      type="text"
+      name="job_name"
+      required
+      value="<%=job.job_name%>" /></label
+  ><br />
+  <label
+    >Company Name:
+    <input
+      type="text"
+      name="company_name"
+      required
+      value="<%=job.company_name%>" /></label
+  ><br />
+  <label
+    >Job Location:
+    <input
+      type="text"
+      name="job_location"
+      required
+      value="<%=job.job_location%>" /></label
+  ><br />
+  <label
+    >Salary:
+    <input
+      type="number"
+      name="salary"
+      required
+      value="<%=job.salary%>" /></label
+  ><br />
+  <label
+    >Skills:
+    <input
+      type="text"
+      name="skills"
+      required
+      value="<%= job.skills.map(skill => skill).join(', ') %>"
+  /></label>
+  <br />
+  <label
+    >Recruiter ID:
+    <input
+      type="text"
+      name="recruiter_id"
+      disabled
+      value="<%=job.recruiter_id%>" /></label
+  ><br />
+  <button type="submit">Update Job</button>
+</form>
