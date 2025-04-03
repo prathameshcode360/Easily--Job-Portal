@@ -51,11 +51,29 @@ export default class JobController {
     job.skills = Array.isArray(job.skills)
       ? job.skills
       : job.skills.split(",").map((skill) => skill.trim());
-    return res.render("updateJob", { job });
+    return res.render("updateJob", {
+      job,
+      userEmail: req.session.userEmail,
+      message: null,
+    });
   }
   updateJob(req, res) {
+    const { job_name, company_name, job_location, salary, skills } = req.body;
     const id = req.body.id; // Yahan se id le sakte hain
-    JobModel.update(id, req.body);
-    res.redirect(`/myJobs/${req.body.recruiter_id}`);
+    const skillsArray = skills.split(",");
+    JobModel.update(
+      id,
+      job_name,
+      company_name,
+      job_location,
+      salary,
+      skillsArray
+    );
+    const job = JobModel.getById(id);
+    return res.render("updateJob", {
+      job,
+      userEmail: req.session.userEmail,
+      message: "Job Updated sucessfully",
+    });
   }
 }

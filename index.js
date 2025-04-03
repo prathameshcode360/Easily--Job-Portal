@@ -1,5 +1,7 @@
 import express from "express";
 import session from "express-session";
+import cookieParser from "cookie-parser";
+import setLastVisit from "./src/middlewares/lastVisit.middleware.js";
 import path from "path";
 import expressEjsLayouts from "express-ejs-layouts";
 import getHomePage from "./src/controllers/homeController.js";
@@ -29,7 +31,8 @@ server.use(
     },
   })
 );
-
+server.use(cookieParser());
+server.use(setLastVisit);
 // setting ejs and ejs layout
 server.use(expressEjsLayouts);
 server.set("view engine", "ejs");
@@ -58,6 +61,7 @@ server.post("/update/:id", jobController.updateJob);
 server.post("/myJobs/:recruiter_id", jobController.updateJob);
 server.get("/register", userController.getRegister);
 server.get("/login", userController.getLogin);
+server.get("/logout", userController.logout);
 server.post("/recruiterHome", userController.signin);
 server.get("/recruiterHome", userController.renderRcruiterPage);
 server.post("/register", userController.signup);

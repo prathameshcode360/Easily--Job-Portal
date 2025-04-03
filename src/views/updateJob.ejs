@@ -1,6 +1,8 @@
 <form action="/update/<%= job.id %>" method="POST">
+  <%if(message){%>
+  <div class="alert alert-danger" role="alert"><%=message%></div>
+  <%}%>
   <input type="hidden" name="id" value="<%= job.id %>" />
-
   <label
     >Job Name:
     <input

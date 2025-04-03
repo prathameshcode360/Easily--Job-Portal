@@ -47,12 +47,22 @@ export default class UserController {
   }
   viewApplications(req, res) {
     const recruiter_id = req.params.recruiter_id;
-    console.log(recruiter_id);
+    // console.log(recruiter_id);
     let applications = UserModel.getApplications(recruiter_id);
     // console.log(applications);
     return res.render("applications", {
       applications,
       userEmail: req.session.userEmail,
     });
+  }
+  logout(req, res) {
+    req.session.destroy((err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.redirect("/");
+      }
+    });
+    res.clearCookie("lastVisit");
   }
 }
