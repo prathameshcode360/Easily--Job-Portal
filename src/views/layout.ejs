@@ -10,8 +10,13 @@
     <nav>
       <div>
         <ul>
+          <%if(locals.userEmail){%>
+          <li><a href="/recruiterHome">My-home</a></li>
+          <li><a href="/logout">Logout</a></li>
+          <%}else{%>
           <li><a href="/">Home</a></li>
           <li><a href="/jobPage">Jobs</a></li>
+          <%}%>
         </ul>
       </div>
     </nav>

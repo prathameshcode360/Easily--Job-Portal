@@ -1,4 +1,5 @@
 import express from "express";
+import session from "express-session";
 import path from "path";
 import expressEjsLayouts from "express-ejs-layouts";
 import getHomePage from "./src/controllers/homeController.js";
@@ -10,16 +11,24 @@ import UserController from "./src/controllers/user.controller.js";
 
 const server = express();
 
-//setting url encoded
-server.use(express.urlencoded({ extended: true }));
-
 // controllers
 const jobController = new JobController();
 const applicationController = new ApplicationController();
 const userController = new UserController();
-
+//setting url encoded
+server.use(express.urlencoded({ extended: true }));
 //setting static file
 server.use(express.static("public"));
+server.use(
+  session({
+    secret: "mysceret",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      secure: false,
+    },
+  })
+);
 
 // setting ejs and ejs layout
 server.use(expressEjsLayouts);
@@ -31,12 +40,15 @@ server.set("views", path.resolve("src", "views"));
 server.get("/", getHomePage);
 server.get("/jobPage", jobController.getJobs);
 server.get("/jobDetails/:id", jobController.getJobDetails);
-server.get("/application_form/:id", jobController.renderApplicationForm);
+server.get(
+  "/application_form/:id",
+  applicationController.renderApplicationForm
+);
 server.post(
   "/application_form/:id",
   resumeUploads.single("resume"),
   validateInputs,
-  jobController.applyForJob
+  applicationController.applyForJob
 );
 server.get("/myApplications/:recruiter_id", userController.viewApplications);
 server.get("/addNew", jobController.getaddNewJobPage);
@@ -46,7 +58,8 @@ server.post("/update/:id", jobController.updateJob);
 server.post("/myJobs/:recruiter_id", jobController.updateJob);
 server.get("/register", userController.getRegister);
 server.get("/login", userController.getLogin);
-server.post("/login", userController.signin);
+server.post("/recruiterHome", userController.signin);
+server.get("/recruiterHome", userController.renderRcruiterPage);
 server.post("/register", userController.signup);
 server.get("/myJobs/:recruiter_id", userController.viewJobs);
 
