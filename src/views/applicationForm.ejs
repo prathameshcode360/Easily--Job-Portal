@@ -1,11 +1,12 @@
 <section class="application_form">
-  <%if(errorMessage){%>
-  <div class="alert alert-danger" role="alert"><%=errorMessage%></div>
-  <%}%>
   <form
     action="/application_form/<%= job.id %>"
     method="post"
     enctype="multipart/form-data">
+    <%if(errorMessage){%>
+    <div class="alert alert-danger" role="alert"><%=errorMessage%></div>
+    <%}%>
+
     <label for="name">Enter your name</label>
     <input type="text" name="name" id="name" placeholder="Enter your name" />
 

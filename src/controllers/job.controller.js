@@ -5,7 +5,7 @@ import UserModel from "../models/user.model.js";
 export default class JobController {
   getJobs(req, res) {
     let jobs = JobModel.getAll();
-    return res.render("jobPage", { jobs });
+    return res.render("jobPage", { jobs, message: null });
   }
   getJobDetails(req, res) {
     const id = req.params.id;
@@ -75,5 +75,17 @@ export default class JobController {
       userEmail: req.session.userEmail,
       message: "Job Updated sucessfully",
     });
+  }
+  searchJob(req, res) {
+    const { job_name } = req.body;
+    const jobs = JobModel.searchByName(job_name);
+    if (jobs.length > 0) {
+      return res.render("jobPage", { jobs: jobs, message: null });
+    } else {
+      return res.render("jobPage", {
+        jobs: [],
+        message: "No job found",
+      });
+    }
   }
 }

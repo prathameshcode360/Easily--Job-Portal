@@ -42,6 +42,7 @@ server.set("views", path.resolve("src", "views"));
 // server.get("/applications", applicationController.getApplications);
 server.get("/", getHomePage);
 server.get("/jobPage", jobController.getJobs);
+server.post("/search", jobController.searchJob);
 server.get("/jobDetails/:id", jobController.getJobDetails);
 server.get(
   "/application_form/:id",

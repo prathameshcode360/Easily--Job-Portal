@@ -1,9 +1,13 @@
-<h1>Welcome <%= user.name %></h1>
-<%if(locals.lastVisit){%>
-<div class="alert alert-primary" role="alert">
-  Last visited on:<%=locals.lastVisit%>
-</div>
-<%}%>
-<a href="/myJobs/<%=user.recruiter_id%>">View Jobs</a>
-<a href="/myApplications/<%=user.recruiter_id%>">View Applications</a>
-<a href="/addNew">Add new job</a>
+<section class="recruiter-dashboard">
+  <h1>Welcome <%= user.name %></h1>
+
+  <% if (locals.lastVisit) { %>
+  <div class="alert alert-primary" role="alert">
+    Last visited on: <%= locals.lastVisit %>
+  </div>
+  <% } %>
+
+  <a href="/myJobs/<%= user.recruiter_id %>">View Jobs</a>
+  <a href="/myApplications/<%= user.recruiter_id %>">View Applications</a>
+  <a href="/addNew">Add new job</a>
+</section>

@@ -1,15 +1,26 @@
-<form action="/addNew" method="POST">
-  <%if(message){%>
-  <div class="alert alert-danger" role="alert"><%=message%></div>
-  <%}%>
-  <label>Job Name: <input type="text" name="job_name" required /></label><br />
-  <label>Company Name: <input type="text" name="company_name" required /></label
-  ><br />
-  <label>Job Location: <input type="text" name="job_location" required /></label
-  ><br />
-  <label>Salary: <input type="number" name="salary" required /></label><br />
-  <label>Skills: <input type="text" name="skills" required /></label><br />
-  <label>Recruiter ID: <input type="text" name="recruiter_id" required /></label
-  ><br />
-  <button type="submit">Add Job</button>
-</form>
+<section class="add-new-job">
+  <form action="/addNew" method="POST">
+    <%if(message){%>
+    <div class="alert alert-danger" role="alert"><%=message%></div>
+    <%}%>
+    <label>Job Name: <input type="text" name="job_name" required /></label
+    ><br />
+    <label
+      >Company Name: <input type="text" name="company_name" required /></label
+    ><br />
+    <label
+      >Job Location: <input type="text" name="job_location" required /></label
+    ><br />
+    <label>Salary: <input type="number" name="salary" required /></label><br />
+    <label>Skills: <input type="text" name="skills" required /></label><br />
+    <label
+      >Recruiter ID:
+      <input
+        type="text"
+        name="recruiter_id"
+        required
+        placeholder="example:CN-1" /></label
+    ><br />
+    <button type="submit">Add Job</button>
+  </form>
+</section>

@@ -51,6 +51,11 @@ export default class JobModel {
     let job = jobs.find((job) => job.id == id);
     return job;
   }
+  static searchByName(name) {
+    return jobs.filter(
+      (job) => job.job_name.toLowerCase() === name.toLowerCase()
+    );
+  }
 }
 let jobs = [
   new JobModel(
