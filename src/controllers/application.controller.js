@@ -29,6 +29,6 @@ export default class ApplicationController {
     };
     ApplicationModel.addApplication(user_details, job_details);
     let jobs = JobModel.getAll();
-    return res.render("jobPage", { jobs });
+    return res.render("jobPage", { jobs, message: null });
   }
 }

@@ -47,6 +47,9 @@ Easily-Job Portal is a job portal web application built using **Node.js and Expr
      - Show only your posted jobs
      - Display applications submitted for your jobs
      - Add new jobs under your ID
+
+- 📝 **Note:** Once you register a recruiter ID, **use the exact same ID throughout the entire application.**
+
 3. After registering, log in using your **email and password**.
 4. Once logged in, you’ll have access to the following features:
    - ✅ **View Jobs** – See all the jobs you've posted.
@@ -67,3 +70,7 @@ Use the following credentials to log in as a recruiter for testing:
 > These credentials are useful for demo/testing without registering manually.
 
 ---
+
+## 🔗 GitHub Repository
+
+[Easily--Job-Portal (GitHub)](https://github.com/prathameshcode360/Easily--Job-Portal.git)
