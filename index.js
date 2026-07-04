@@ -29,7 +29,7 @@ server.use(
     cookie: {
       secure: false,
     },
-  })
+  }),
 );
 server.use(cookieParser());
 server.use(setLastVisit);
@@ -46,13 +46,13 @@ server.post("/search", jobController.searchJob);
 server.get("/jobDetails/:id", jobController.getJobDetails);
 server.get(
   "/application_form/:id",
-  applicationController.renderApplicationForm
+  applicationController.renderApplicationForm,
 );
 server.post(
   "/application_form/:id",
   resumeUploads.single("resume"),
   validateInputs,
-  applicationController.applyForJob
+  applicationController.applyForJob,
 );
 server.get("/myApplications/:recruiter_id", userController.viewApplications);
 server.get("/addNew", jobController.getaddNewJobPage);
@@ -73,6 +73,8 @@ server.get("/myJobs/:recruiter_id", userController.viewJobs);
 
 server.use("/uploads", express.static("uploads"));
 
-server.listen(3600, () => {
-  console.log("server is listening on 3600");
+const PORT = process.env.PORT || 3600;
+
+server.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
 });
